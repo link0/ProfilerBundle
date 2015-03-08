@@ -7,8 +7,6 @@
  */
 namespace Link0\ProfilerBundle\EventListener;
 
-use League\Flysystem\Adapter\Local;
-use Link0\Profiler\Filesystem;
 use Link0\Profiler\PersistenceHandler;
 use Link0\Profiler\Profiler;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
