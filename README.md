@@ -7,7 +7,7 @@ Link0\ProfilerBundle
 [![Code Coverage](https://scrutinizer-ci.com/g/link0/ProfilerBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/link0/ProfilerBundle/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/link0/ProfilerBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/link0/ProfilerBundle/build-status/master)
 
-This repository wraps the `Link0/Profiler` package in a nice Symfony2 bundle, hooked to events for starting and stopping the profiler
+This repository wraps the [Link0/Profiler](https://github.com/link0/profiler) package in a nice Symfony2 bundle, hooked to events for starting and stopping the profiler
 
 Installation
 ============
