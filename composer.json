@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "link0/profiler": "~0.1"
+        "link0/profiler": "~1.0"
     },
     "require-dev": {
         "symfony/framework-bundle": "~2",
