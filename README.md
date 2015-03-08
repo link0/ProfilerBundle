@@ -3,9 +3,9 @@ Link0\ProfilerBundle
 [![Latest Stable Version](https://poser.pugx.org/link0/profiler-bundle/v/stable.svg)](https://packagist.org/packages/link0/profiler-bundle)
 [![Total Downloads](https://poser.pugx.org/link0/profiler-bundle/downloads.svg)](https://packagist.org/packages/link0/profiler-bundle)
 [![License](https://poser.pugx.org/link0/profiler-bundle/license.svg)](https://packagist.org/packages/link0/profiler-bundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/link0/profiler-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/link0/profiler-bundle/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/link0/profiler-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/link0/profiler-bundle/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/link0/profiler-bundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/link0/profiler-bundle/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/link0/ProfilerBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/link0/ProfilerBundle/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/link0/ProfilerBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/link0/ProfilerBundle/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/link0/ProfilerBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/link0/ProfilerBundle/build-status/master)
 
 This repository wraps the `Link0/Profiler` package in a nice Symfony2 bundle, hooked to events for starting and stopping the profiler
 
