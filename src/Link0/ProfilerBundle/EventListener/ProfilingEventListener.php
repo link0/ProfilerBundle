@@ -31,6 +31,11 @@ use Symfony\Component\HttpKernel\TerminableInterface;
 class ProfilingEventListener
 {
     /**
+     * @var \Link0\Profiler\Profiler
+     */
+    private $profiler;
+
+    /**
      * A persistence handler should be fed, since null will disable persisting profiles
      *
      * @param PersistenceHandler $handler
@@ -87,5 +92,4 @@ class ProfilingEventListener
     {
         $this->getProfiler()->stop();
     }
-
 }
