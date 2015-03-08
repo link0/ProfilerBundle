@@ -1,0 +1,30 @@
+{
+    "name": "link0/profiler-bundle",
+    "type": "symfony-bundle",
+    "description": "Profiler bundle for Symfony2 to profile automatically using the event listener",
+    "keywords": ["link0", "profiler", "symfony2", "bundle"],
+    "homepage": "http://github.com/link0/ProfilerBundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "Link0\\ProfilerBundle": ["src/", "tests/"]
+        }
+    },
+    "authors": [
+        {
+            "name": "Dennis de Greef",
+            "email": "github@link0.net",
+            "homepage": "http://www.github.com/dennisdegreef"
+        }
+    ],
+    "require": {
+        "link0/profiler": "~0.1"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": "~2",
+        "phpunit/phpunit": "~4.2"
+    },
+    "config": {
+        "bin-dir":"bin/"
+    }
+}

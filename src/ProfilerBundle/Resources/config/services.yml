@@ -1,0 +1,5 @@
+services:
+    kernel.listener.link0profilerlistener:
+        class: Link0\ProfilerBundle\EventListener\ProfilingEventListener
+        tags:
+            - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
