@@ -1,5 +1,11 @@
 services:
     kernel.listener.link0profilerlistener:
         class: Link0\ProfilerBundle\EventListener\ProfilingEventListener
+        param: [@profiling_service]
         tags:
-            - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
+            - { name: kernel.event_listener, event: console.command,   method: start }
+            - { name: kernel.event_listener, event: kernel.request,    method: start }
+            - { name: kernel.event_listener, event: console.terminate, method: stop  }
+            - { name: kernel.event_listener, event: kernel.terminate,  method: stop  }
+    profiling_service:
+        class: Link0\ProfilerBundle\Service\ProfilingService

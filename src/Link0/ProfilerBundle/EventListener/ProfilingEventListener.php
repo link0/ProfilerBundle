@@ -8,88 +8,65 @@
 namespace Link0\ProfilerBundle\EventListener;
 
 use Link0\Profiler\PersistenceHandler;
-use Link0\Profiler\Profiler;
-use Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\Console\Event\ConsoleCommandEvent;
-use Symfony\Component\HttpKernel\TerminableInterface;
+use Link0\ProfilerBundle\Service\ProfilingService;
 
 /**
  * Class ProfilingEventListener
  *
  * Hooks into the symfony event system, and starts and stops the profiler on certain events
  *
- * Start:
- *  - console.command
- *  - kernel.request
- * Stop:
- *  - console.terminate
- *  - kernel.terminate
+ * You can configure this event listener in your services.yml in the following format
+ *
+ * services:
+ *   kernel.listener.link0profilerlistener:
+ *     class: Link0\ProfilerBundle\EventListener\ProfilingEventListener
+ *     param: [@profiling_service]
+ *     tags:
+ *       - { name: kernel.event_listener, event: console.command,   method: start }
+ *       - { name: kernel.event_listener, event: kernel.request,    method: start }
+ *       - { name: kernel.event_listener, event: console.terminate, method: stop  }
+ *       - { name: kernel.event_listener, event: kernel.terminate,  method: stop  }
  *
  * @package Link0\ProfilerBundle\EventListener
  */
-class ProfilingEventListener
+final class ProfilingEventListener
 {
     /**
      * @var \Link0\Profiler\Profiler
      */
-    private $profiler;
+    private $profilingService;
 
     /**
-     * A persistence handler should be fed, since null will disable persisting profiles
+     * @param ProfilingService $profilingService
+     */
+    public function __construct(ProfilingService $profilingService)
+    {
+        $this->profilingService = $profilingService;
+    }
+
+    /**
+     * @return ProfilingService
+     */
+    public function getProfilingService()
+    {
+        return $this->profilingService;
+    }
+
+    /**
+     * Starts the profiler
+     */
+    public function start()
+    {
+        $this->getProfilingService()->start();
+    }
+
+    /**
+     * Stops the profiler
      *
-     * @param PersistenceHandler $handler
+     * @return \Link0\Profiler\Profile
      */
-    public function __construct(PersistenceHandler $handler = null)
+    public function stop()
     {
-        $this->profiler = new Profiler($handler);
-    }
-
-    /**
-     * @return Profiler
-     */
-    public function getProfiler()
-    {
-        return $this->profiler;
-    }
-
-    /**
-     * @event console.command
-     * @param ConsoleCommandEvent $event
-     */
-    public function onConsoleCommand(ConsoleCommandEvent $event)
-    {
-        $this->getProfiler()->start();
-    }
-
-    /**
-     * @event kernel.request
-     * @param GetResponseEvent $event
-     */
-    public function onKernelRequest(GetResponseEvent $event)
-    {
-        if (!$event->isMasterRequest()) {
-            return;
-        }
-
-        $this->getProfiler()->start();
-    }
-
-    /**
-     * @event console.terminate
-     * @param ConsoleTerminateEvent $event
-     */
-    public function onConsoleTerminate(ConsoleTerminateEvent $event)
-    {
-        $this->getProfiler()->stop();
-    }
-
-    /**
-     * @event kernel.terminate
-     * @param TerminableInterface $event
-     */
-    public function onKernelTerminate(TerminableInterface $event)
-    {
-        $this->getProfiler()->stop();
+        return $this->getProfilingService()->stop();
     }
 }
